@@ -2,8 +2,15 @@
 using namespace std;
 
 void printBinary(int num) {
+  bool isOK = false;
   for (int i = 10; i >= 0; i--) {
-    cout << ((num >> i) & 1);
+    int a = ((num >> i) & 1);
+    if (a == 1) {
+      isOK = true;
+    }
+    if (isOK) {
+      cout << a;
+    }
   }
   cout << endl;
 }
@@ -20,11 +27,14 @@ void changeToUnset(int &num, int indx) {
 }
 
 void toggleBit(int &num, int indx) {
-  if (isSet(num, indx)) {
-    changeToUnset(num, indx);
-  } else {
-    changeToSet(num, indx);
-  }
+  // if (isSet(num, indx)) {
+  //   changeToUnset(num, indx);
+  // } else {
+  //   changeToSet(num, indx);
+  // }
+
+  // short approach
+  num = (1 << indx) ^ num;
 }
 
 // interface
@@ -89,6 +99,7 @@ void my_switch(bool &onGo, int &num) {
   case 5: {
     exit();
     onGo = false;
+    break;
   }
   default:
     cout << "\nInvalid Option Please Try again -_-" << endl;
