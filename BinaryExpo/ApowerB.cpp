@@ -15,9 +15,9 @@ long long my_pow(int a, int b) {
 long long withModulo(int a, int b) {
   if (b == 0)
     return 1;
-  long long int store = my_pow(a, b / 2);
+  long long int store = withModulo(a, b / 2);
   if (b & 1) {
-    return (a * (store * 1LL * store) % M) % M; // formula in my note
+    return (a * ((store * 1LL * store) % M)) % M; // formula in my note
   } else {
     return (store * 1LL * store) % M;
   }
@@ -29,9 +29,9 @@ long long binExpoIter(int a, int b) {
   int ans = 1;
   while (b) {
     if (b & 1) {
-      ans *= a;
+      ans = (ans * 1LL * a) % M;
     }
-    a *= a;
+    a = (a * 1LL * a) % M;
     b >>= 1;
   }
   return ans;
