@@ -23,9 +23,24 @@ long long withModulo(int a, int b) {
   }
 }
 
+// Iterative appeoach
+// Time complexity low and optimized!! Theory on my note
+long long binExpoIter(int a, int b) {
+  int ans = 1;
+  while (b) {
+    if (b & 1) {
+      ans *= a;
+    }
+    a *= a;
+    b >>= 1;
+  }
+  return ans;
+}
+
 int main() {
   int a, b;
   cin >> a >> b;
   // cout << my_pow(a, b);
-  cout << withModulo(a, b);
+  cout << withModulo(a, b) << endl;
+  cout << "Iterative " << binExpoIter(a, b);
 }
