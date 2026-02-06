@@ -37,6 +37,19 @@ long long binExpoIter(int a, int b) {
   return ans;
 }
 
+// binMultiply
+long long binExpoIterMultiply(int a, int b) {
+  int ans = 1;
+  while (b) {
+    if (b & 1) {
+      ans = (ans * a) % M;
+    }
+    a = (a + a) % M;
+    b >>= 1;
+  }
+  return ans;
+}
+
 int main() {
   int a, b;
   cin >> a >> b;
