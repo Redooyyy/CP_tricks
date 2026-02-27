@@ -6,7 +6,7 @@ bool visited[N];
 void dfs(int vertex) {
   // NOTE: Take action on vertex after entering the vertex
   visited[vertex] = true;
-  // cout << vertex << endl;
+  cout << vertex << " ";
   for (int child : graph[vertex]) {
     // NOTE: Take action on the child before entering the child node
 
@@ -34,11 +34,11 @@ int main() {
   // handeling disconnected graph
   // counting how many connected graph in a forest
   int ct = 0;
-  for (int i = 0; i <= n; i++) {
+  for (int i = 1; i <= n; i++) {
     if (visited[i])
       continue;
     ct++;
     dfs(i);
   }
-  cout << ct << endl;
+  cout << endl;
 }
